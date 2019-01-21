@@ -14,7 +14,7 @@ async def on_ready():
     
 @client.command(pass_context = True)
 @commands.has_role("Admin")
-async def locolives(ctx)
+async def locolives(ctx):
     if message.channel.type != discord.ChannelType.private:
         await client.say("What's your referral")
         ref = await bot.wait_for_message(author=ctx.message.author)
@@ -28,7 +28,7 @@ async def locolives(ctx)
     
 @client.command(pass_context = True)
 @commands.has_role("Admin")
-async def lococoins(ctx)
+async def lococoins(ctx):
     if message.channel.type != discord.ChannelType.private:
         await client.say("What's your referral")
         ref = await bot.wait_for_message(author=ctx.message.author)
@@ -48,7 +48,7 @@ async def lococoins(ctx)
         
 @client.command(pass_context = True)
 @commands.has_role("Admin")
-async def locoverify(ctx, user: discord.Member)
+async def locoverify(ctx, user: discord.Member):
     if message.channel.type != discord.ChannelType.private:
         if not user: await client.say("Please specify a user")
         else:
@@ -59,13 +59,6 @@ async def locoverify(ctx, user: discord.Member)
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
 
-    
-    
-@client.event
-async def on_message(message):
-    await client.process_commands(message)
-    if message.channel.type == discord.ChannelType.private:
-        await client.send_message(message.channel, "This bot isn't made for DMs")
 
 token = os.getenv("DISCORD_BOT_SECRET")
 client.run(token)
