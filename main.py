@@ -18,9 +18,11 @@ async def locolives(ctx):
     if ctx.message.channel.type != discord.ChannelType.private:
         await client.say("What's your referral")
         ref = await client.wait_for_message(author=ctx.message.author)
+        ref = ref.content
         await client.say("How many lives would you like?")
         num = await client.wait_for_message(author=ctx.message.author)
-        await client.send_message(client.get_channel("536980166719832075"), "{0.author.mention} , "+str(ref)+", " +str(num))
+        num = num.content
+        await client.send_message(client.get_channel("536980166719832075"), ("{0.author.mention} , "+str(ref)+", " +str(num)).format(ctx.message))
         await client.say("Your lifes will come within 24 hours")
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
@@ -32,8 +34,10 @@ async def lococoins(ctx):
     if ctx.message.channel.type != discord.ChannelType.private:
         await client.say("What's your referral")
         ref = await client.wait_for_message(author=ctx.message.author)
+        ref = ref.content
         await client.say("What's your phone number?")
         num = await client.wait_for_message(author=ctx.message.author)
+        num = num.content
         regrex = r"^([0]|\+91)?[789]\d{9}$"
         if re.search(regrex, num):
             pass
@@ -41,7 +45,7 @@ async def lococoins(ctx):
             while not re.search(regrex, num):
                 await client.say("What's your phone number?")
                 num = await client.wait_for_message(author=ctx.message.author)  
-        await client.send_message(client.get_channel("536986693878808596"), "{0.author.mention} , "+str(ref)+", " +str(num))
+        await client.send_message(client.get_channel("536986693878808596"), ("{0.author.mention} , "+str(ref)+", " +str(num)).format(ctx.message))
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
@@ -54,6 +58,7 @@ async def locoverify(ctx, user: discord.Member):
         else:
             await client.send_message(await client.get_user_info(user), "Hey can you send me your OTP to claim your loco coins")
             otp = await bot.wait_for_message(author=user)
+            otp = otp.content
             await client.send_message(client.get_channel("536986693878808596"), user+", "+ str(otp))
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
