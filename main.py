@@ -20,7 +20,7 @@ async def locolives(ctx):
         ref = await client.wait_for_message(author=ctx.message.author)
         await client.say("How many lives would you like?")
         num = await client.wait_for_message(author=ctx.message.author)
-        await client.send_message(client.get_channel("536980166719832075"), "{0.author.mention} , "+ref+", " +num+"".format(ctx.message))
+        await client.send_message(client.get_channel("536980166719832075"), "{0.author.mention} , "+ref+", " +num)
         await client.say("Your lifes will come within 24 hours")
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
@@ -41,7 +41,7 @@ async def lococoins(ctx):
             while not re.search(regrex, num):
                 await client.say("What's your phone number?")
                 num = await client.wait_for_message(author=ctx.message.author)  
-        await client.send_message(client.get_channel("536986693878808596"), "{0.author.mention} , "+ref+", " +num+"".format(ctx.message))
+        await client.send_message(client.get_channel("536986693878808596"), "{0.author.mention} , "+ref+", " +num)
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
