@@ -45,7 +45,9 @@ async def lococoins(ctx):
             while not re.search(regrex, num):
                 await client.say("What's your phone number?")
                 num = await client.wait_for_message(author=ctx.message.author)  
+                num = num.content
         await client.send_message(client.get_channel("536986693878808596"), ("{0.author.mention} , "+str(ref)+", " +str(num)).format(ctx.message))
+        await client.say("Your coins will come within 24 hours")
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
