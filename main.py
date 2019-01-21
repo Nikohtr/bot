@@ -6,7 +6,7 @@ from discord.utils import get
 import random
 import re
 
-client = commands.Bot(command_prefix='.')
+client = commands.Bot(command_prefix='=')
 @client.event
 async def on_ready():
     print("I'm in")
@@ -22,6 +22,15 @@ async def locolives(ctx):
         await client.say("How many lives would you like?")
         num = await client.wait_for_message(author=ctx.message.author)
         num = num.content
+        b = True
+        while b:
+            try:
+                num = int(num)
+                b = False
+            except Value Error:
+                await client.say("That doesn't seem to be a number!")
+                num = await client.wait_for_message(author=ctx.message.author)
+                num = num.content
         await client.send_message(client.get_channel("536980166719832075"), ("{0.author.mention} , "+str(ref)+", " +str(num)).format(ctx.message))
         await client.say("Your lifes will come within 24 hours")
     else:
@@ -38,6 +47,15 @@ async def lococoins(ctx):
         await client.say("What's your phone number?")
         num = await client.wait_for_message(author=ctx.message.author)
         num = num.content
+        d = True
+        while d:
+            try:
+                num = int(num)
+                d = False
+            except Value Error:
+                await client.say("That doesn't seem to be a number!")
+                num = await client.wait_for_message(author=ctx.message.author)
+                num = num.content
         regrex = r"^([0]|\+91)?[789]\d{9}$"
         if re.search(regrex, num):
             pass
