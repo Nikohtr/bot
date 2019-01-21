@@ -67,7 +67,7 @@ async def locoverify(ctx, user: discord.Member):
                 while not otp.isdigit() and len(otp) == 4:
                     otp = await client.wait_for_message(author=user)
                     otp = otp.content
-            await client.send_message(client.get_channel("536986693878808596"), user+", "+ str(otp))
+                await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
