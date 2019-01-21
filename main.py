@@ -27,7 +27,7 @@ async def locolives(ctx):
             try:
                 num = int(num)
                 b = False
-            except Value Error:
+            except ValueError:
                 await client.say("That doesn't seem to be a number!")
                 num = await client.wait_for_message(author=ctx.message.author)
                 num = num.content
@@ -52,7 +52,7 @@ async def lococoins(ctx):
             try:
                 num = int(num)
                 d = False
-            except Value Error:
+            except ValueError:
                 await client.say("That doesn't seem to be a number!")
                 num = await client.wait_for_message(author=ctx.message.author)
                 num = num.content
