@@ -15,7 +15,7 @@ async def on_ready():
 @client.command(pass_context = True)
 @commands.has_role("Admin")
 async def locolives(ctx):
-    if message.channel.type != discord.ChannelType.private:
+    if ctx.message.channel.type != discord.ChannelType.private:
         await client.say("What's your referral")
         ref = await bot.wait_for_message(author=ctx.message.author)
         await client.say("How many lives would you like?")
@@ -29,7 +29,7 @@ async def locolives(ctx):
 @client.command(pass_context = True)
 @commands.has_role("Admin")
 async def lococoins(ctx):
-    if message.channel.type != discord.ChannelType.private:
+    if ctx.message.channel.type != discord.ChannelType.private:
         await client.say("What's your referral")
         ref = await bot.wait_for_message(author=ctx.message.author)
         await client.say("What's your phone number?")
@@ -49,7 +49,7 @@ async def lococoins(ctx):
 @client.command(pass_context = True)
 @commands.has_role("Admin")
 async def locoverify(ctx, user: discord.Member):
-    if message.channel.type != discord.ChannelType.private:
+    if ctx.message.channel.type != discord.ChannelType.private:
         if not user: await client.say("Please specify a user")
         else:
             await client.send_message(await client.get_user_info(user), "Hey can you send me your OTP to claim your loco coins")
