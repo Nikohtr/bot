@@ -75,6 +75,7 @@ async def locoverify(ctx, user: discord.Member):
             while c:
                 try:
                     otp = int(otp)
+                    otp = str(otp)
                     if len(otp) != 4:
                         pass
                     else:
