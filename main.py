@@ -59,13 +59,21 @@ async def lococoins(ctx):
         await client.say("Your coins will come within 24 hours")
     else:
         await client.send_message(ctx.message.channel, "This bot isn't made for DMs")
+        
+        
+        
+def is_otp_valid(a):
+    if len(a)==4 and a.isdigit():
+        return True
+    else:
+        return False
 
         
 @client.command(pass_context = True)
 @commands.has_role("Admin")
-async def locoverify(ctx, user: discord.Member):
+async def locoverify(ctx, user: discord.Member = None):
     if ctx.message.channel.type != discord.ChannelType.private:
-        if not user: await client.say("Please specify a user")
+        if user = None: await client.say("Please specify a user")
         else:
             await client.say("Done!")
             await client.send_message(await client.get_user_info(user.id), "Hey can you send me your OTP to claim your loco coins")
@@ -73,7 +81,7 @@ async def locoverify(ctx, user: discord.Member):
             otp = otp.content
             print(len(otp))
             print(otp.isdigit())
-            while len(otp)!=4 and not otp.isdigit():
+            while not is_otp_valid(otp):
                 await client.send_message(await client.get_user_info(user.id), "That doesn't seem to be it!")
                 otp = await client.wait_for_message(author=user)
                 otp = otp.content
