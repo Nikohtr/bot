@@ -73,7 +73,7 @@ def is_otp_valid(a):
 @commands.has_role("Admin")
 async def locoverify(ctx, user: discord.Member = None):
     if ctx.message.channel.type != discord.ChannelType.private:
-        if user = None: await client.say("Please specify a user")
+        if user == None: await client.say("Please specify a user")
         else:
             await client.say("Done!")
             await client.send_message(await client.get_user_info(user.id), "Hey can you send me your OTP to claim your loco coins")
