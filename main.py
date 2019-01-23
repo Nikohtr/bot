@@ -71,7 +71,8 @@ async def locoverify(ctx, user: discord.Member):
             await client.send_message(await client.get_user_info(user.id), "Hey can you send me your OTP to claim your loco coins")
             otp = await client.wait_for_message(author=user)
             otp = otp.content
-            c = True
+            print(len(otp))
+            print(otp.isdigit())
             while len(otp)!=4 and not otp.isdigit():
                 await client.send_message(await client.get_user_info(user.id), "That doesn't seem to be it!")
                 otp = await client.wait_for_message(author=user)
